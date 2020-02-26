@@ -6,7 +6,7 @@ namespace NerdStore.Core.DomainObjects
     {
         public static void ValidarSeIgual(object object1, object object2, string mensagem)
         {
-            if (!object1.Equals(object2))
+            if (object1.Equals(object2))
             {
                 throw new DomainException(mensagem);
             }
@@ -20,7 +20,17 @@ namespace NerdStore.Core.DomainObjects
             }
         }
 
-        public static void ValidarCaracteres(string valor, int maximo, string mensagem)
+        public static void ValidarSeDiferente(string pattern, string valor, string mensagem)
+        {
+            var regex = new Regex(pattern);
+
+            if (!regex.IsMatch(valor))
+            {
+                throw new DomainException(mensagem);
+            }
+        }
+
+        public static void ValidarTamanho(string valor, int maximo, string mensagem)
         {
             var length = valor.Trim().Length;
             if (length > maximo)
@@ -29,20 +39,10 @@ namespace NerdStore.Core.DomainObjects
             }
         }
 
-        public static void ValidarCaracteres(string valor, int maximo, int minimo, string mensagem)
+        public static void ValidarTamanho(string valor, int minimo, int maximo, string mensagem)
         {
             var length = valor.Trim().Length;
             if (length < minimo || length > maximo)
-            {
-                throw new DomainException(mensagem);
-            }
-        }
-
-        public static void ValidarExpressao(string pattern, string valor, string mensagem)
-        {
-            var regex = new Regex(pattern);
-
-            if (!regex.IsMatch(valor))
             {
                 throw new DomainException(mensagem);
             }
@@ -104,41 +104,33 @@ namespace NerdStore.Core.DomainObjects
             }
         }
 
-        public static void ValidarSeMenorIgualMinimo(long valor, long minimo, string mensagem)
+        public static void ValidarSeMenorQue(long valor, long minimo, string mensagem)
         {
-            if (valor <= minimo)
+            if (valor < minimo)
             {
                 throw new DomainException(mensagem);
             }
         }
 
-        public static void ValidarSeMenorIgualMinimo(int valor, int minimo, string mensagem)
+        public static void ValidarSeMenorQue(double valor, double minimo, string mensagem)
         {
-            if (valor <= minimo)
+            if (valor < minimo)
             {
                 throw new DomainException(mensagem);
             }
         }
 
-        public static void ValidarSeMenorIgualMinimo(float valor, float minimo, string mensagem)
+        public static void ValidarSeMenorQue(decimal valor, decimal minimo, string mensagem)
         {
-            if (valor <= minimo)
+            if (valor < minimo)
             {
                 throw new DomainException(mensagem);
             }
         }
 
-        public static void ValidarSeMenorIgualMinimo(decimal valor, decimal minimo, string mensagem)
+        public static void ValidarSeMenorQue(int valor, int minimo, string mensagem)
         {
-            if (valor <= minimo)
-            {
-                throw new DomainException(mensagem);
-            }
-        }
-
-        public static void ValidarSeMenorIgualMinimo(double valor, double minimo, string mensagem)
-        {
-            if (valor <= minimo)
+            if (valor < minimo)
             {
                 throw new DomainException(mensagem);
             }
@@ -146,16 +138,15 @@ namespace NerdStore.Core.DomainObjects
 
         public static void ValidarSeFalso(bool boolvalor, string mensagem)
         {
-            if (boolvalor)
+            if (!boolvalor)
             {
                 throw new DomainException(mensagem);
             }
-
         }
 
         public static void ValidarSeVerdadeiro(bool boolvalor, string mensagem)
         {
-            if (!boolvalor)
+            if (boolvalor)
             {
                 throw new DomainException(mensagem);
             }
