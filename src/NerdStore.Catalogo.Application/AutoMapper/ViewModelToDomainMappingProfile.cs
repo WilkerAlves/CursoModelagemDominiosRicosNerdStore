@@ -15,14 +15,10 @@ namespace NerdStore.Catalogo.Application.AutoMapper
                         p.Imagem, new Dimensoes(p.Altura, p.Largura, p.Profundidade)));
 
 
-            //A classe categorio só pode ser criada via construtor
+            //A classe categoria só pode ser criada via construtor
             //Nesse caso estou mapeando CategoriaViewModel passando os dados para Categoria via construtor
             CreateMap<CategoriaViewModel, Categoria>()
                 .ConstructUsing(c => new Categoria(c.Nome, c.Codigo));
-
-            
-
-
         }
     }
 }
