@@ -17,15 +17,25 @@ namespace NerdStore.Catalogo.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Configuração do entity para 3.1
             foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
                 e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
                 property.SetColumnType("varchar(100)");
 
+            //Configuração do entity na versão 2.2
+            //foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
+            //    e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
+            //    property.Relational().ColumnType = "varchar(100)";
+
+            //Registrando todos os mappings
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogoContext).Assembly);
         }
 
         public async Task<bool> Commit()
         {
+            //verifica se a propriedade data cadastro está sendo criada
+            //caso sim data cadastro receber a data atual
+            //caso não iguinora o valor de data cadastro impedindo assim que esse campo seja atualizado
             foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("DataCadastro") != null))
             {
                 if (entry.State == EntityState.Added)

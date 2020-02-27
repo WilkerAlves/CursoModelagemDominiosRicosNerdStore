@@ -17,6 +17,7 @@ namespace NerdStore.Catalogo.Data.Repository
             _context = context;
         }
 
+        //Recurso do C# 7 que diz que UnitOfWork reflete o context
         public IUnitOfWork UnitOfWork => _context;
 
         public async Task<IEnumerable<Produto>> ObterTodos()

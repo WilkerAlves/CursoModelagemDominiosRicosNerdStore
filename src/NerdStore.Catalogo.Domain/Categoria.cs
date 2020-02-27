@@ -20,6 +20,7 @@ namespace NerdStore.Catalogo.Domain
             Validar();
         }
 
+        //Esse contrutor é para o ef
         protected Categoria()
         {
             
