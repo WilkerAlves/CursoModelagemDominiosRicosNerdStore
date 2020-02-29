@@ -54,7 +54,7 @@ namespace NerdStore.Catalogo.Domain
 
         public void DebitarEstoque(int quantidade)
         {
-            if (quantidade > 0) quantidade *= -1;
+            if (quantidade < 0) quantidade *= -1;
             if (!PossuiEstoque(quantidade)) throw  new DomainException("Estoque insuficiente");
 
             QuantidadeEstoque -= quantidade;
