@@ -17,6 +17,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
   </ItemGroup>
 
 
@@ -26,6 +27,7 @@
     <ProjectReference Include="..\NerdStore.Catalogo.Domain\NerdStore.Catalogo.Domain.csproj" />
     <ProjectReference Include="..\NerdStore.Core\NerdStore.Core.csproj" />
     <ProjectReference Include="..\NerdStore.Vendas.Application\NerdStore.Vendas.Application.csproj" />
+    <ProjectReference Include="..\NerdStore.Vendas.Data\NerdStore.Vendas.Data.csproj" />
   </ItemGroup>
 
 
