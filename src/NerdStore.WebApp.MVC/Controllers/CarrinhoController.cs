@@ -51,7 +51,7 @@ namespace NerdStore.WebApp.MVC.Controllers
             }
 
 
-            TempData["Erro"] = "Produto Indisponivel";
+            TempData["Erros"] = ObterMensagensErro();
             return RedirectToAction("ProdutoDetalhe", "Vitrine", new { id });
         }
     }
