@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using NerdStore.Catalogo.Domain;
 using NerdStore.Core.Data;
+using NerdStore.Core.Messages;
 
 namespace NerdStore.Catalogo.Data
 {
@@ -26,6 +27,9 @@ namespace NerdStore.Catalogo.Data
             //foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
             //    e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
             //    property.Relational().ColumnType = "varchar(100)";
+
+            //ignorando tudo que for relacionado a evento
+            modelBuilder.Ignore<Event>();
 
             //Registrando todos os mappings
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogoContext).Assembly);

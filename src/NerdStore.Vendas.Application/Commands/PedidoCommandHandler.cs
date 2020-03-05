@@ -49,11 +49,13 @@ namespace NerdStore.Vendas.Application.Commands
                 {
                     _pedidoRepository.AdicionarItem(pedidoItem);
                 }
+
+                pedido.AdicionarEvento(new PedidoAtualizadoEvent(pedido.ClienteId, pedido.Id, pedido.ValorTotal));
             }
 
+            pedido.AdicionarEvento(new PedidoItemAdicionadoEvent(pedido.ClienteId,pedido.Id, message.ProdutoId, message.ValorUnitario, message.Quantidade, message.Nome) );
             return await _pedidoRepository.UnitOfWork.Commit();
         }
-
 
         private bool ValidarComando(Command message)
         {
