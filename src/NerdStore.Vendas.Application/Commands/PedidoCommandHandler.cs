@@ -14,7 +14,8 @@ namespace NerdStore.Vendas.Application.Commands
         IRequestHandler<AdicionarItemPedidoCommand, bool>,
         IRequestHandler<AplicarVoucherPedidoCommand, bool>,
         IRequestHandler<RemoverItemPedidoCommand, bool>,
-        IRequestHandler<AtualizarItemPedidoCommand, bool>
+        IRequestHandler<AtualizarItemPedidoCommand, bool>,
+        IRequestHandler<IniciarPedidoCommand, bool>
     {
         private readonly IPedidoRepository _pedidoRepository;
         private readonly IMediatorHandler _mediatorHandler;
@@ -156,6 +157,20 @@ namespace NerdStore.Vendas.Application.Commands
             return await _pedidoRepository.UnitOfWork.Commit();
         }
 
+        public async Task<bool> Handle(IniciarPedidoCommand message, CancellationToken cancellationToken)
+        {
+            if (!ValidarComando(message)) return false;
+
+            var pedido = await _pedidoRepository.ObterPedidoRascunhoPorClienteId(message.ClienteId);
+            pedido.IniciarPedido();
+
+
+
+
+
+            _pedidoRepository.Atualizar(pedido);
+            return await _pedidoRepository.UnitOfWork.Commit();
+        }
 
         private bool ValidarComando(Command message)
         {
@@ -169,5 +184,6 @@ namespace NerdStore.Vendas.Application.Commands
 
             return false;
         }
+        
     }
 }
