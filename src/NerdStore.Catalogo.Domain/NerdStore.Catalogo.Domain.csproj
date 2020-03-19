@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NerdStore.Core\NerdStore.Core.csproj" />
+    <ProjectReference Include="..\NerdStore.Vendas.Application\NerdStore.Vendas.Application.csproj" />
   </ItemGroup>
 
 </Project>

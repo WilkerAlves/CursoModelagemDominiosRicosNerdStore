@@ -120,8 +120,8 @@ namespace NerdStore.WebApp.MVC.Controllers
             var command = new IniciarPedidoCommand(carrinho.PedidoId, ClienteId, carrinho.ValorTotal,
                 carrinhoViewModel.Pagamento.NomeCartao,carrinhoViewModel.Pagamento.NumeroCartao,
                 carrinhoViewModel.Pagamento.ExpiracaoCartao, carrinhoViewModel.Pagamento.CvvCartao);
-
             await _mediatorHandler.EnviarComando(command);
+            
             if (OperacaoValida())
             {
                 return RedirectToAction("Index", "Pedido");
