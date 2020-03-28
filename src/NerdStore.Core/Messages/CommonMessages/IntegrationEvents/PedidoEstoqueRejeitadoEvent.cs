@@ -9,7 +9,7 @@ namespace NerdStore.Core.Messages.CommonMessages.IntegrationEvents
 
         public PedidoEstoqueRejeitadoEvent(Guid pedidoId, Guid clienteId)
         {
-            AggregateId = PedidoId;
+            AggregateId = pedidoId;
             PedidoId = pedidoId;
             ClienteId = clienteId;
         }
