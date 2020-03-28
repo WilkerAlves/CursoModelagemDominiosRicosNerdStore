@@ -18,6 +18,7 @@ namespace NerdStore.Core.Messages.CommonMessages.IntegrationEvents
             ListaProdutosPedido produtosPedido, string nomeCartao,
             string numeroCartao, string expiracaoCartao, string cvvCartao)
         {
+            AggregateId = pedidoId;
             PedidoId = pedidoId;
             ClienteId = clienteId;
             Total = total;
