@@ -49,6 +49,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcing", "src\EventSourcing\EventSourcing.csproj", "{EA9A1BF1-6686-4EDA-ACBD-6D6708E146C4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TextoParaRelembrar", "TextoParaRelembrar", "{C06456E2-E780-48AE-94AC-33E5952C1835}"
+	ProjectSection(SolutionItems) = preProject
+		Estudar melhor.txt = Estudar melhor.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -1,0 +1,48 @@
+Api Gateway
+Entity framework core 3.1
+Asp net Core 3.1
+Mediatr
+O que é um Bus?
+O que é o conceito de Unit of Work?
+O que é Dispose, e para que server?
+Identity
+Teorema CAP
+Fluent Validation
+Sagas
+Rebus
+Event Store (Event-based Data Store)
+Docker
+
+#pacotes
+MVC
+Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection
+Install-Package MediatR.Extensions.Microsoft.DependencyInjection
+
+Core
+Install-Package FluentValidation
+
+
+#comandos migração
+Add-Migration Initial -Context CatalogoContext
+update-database -Context CatalogoContext
+
+#dados para o banco
+categorias
+INSERT INTO [dbo].[Categorias] ([Id], [Nome], [Codigo]) VALUES (N'a0182512-5a21-4eee-8b30-d626ce8b8d3f', N'Adesivos', 102)
+INSERT INTO [dbo].[Categorias] ([Id], [Nome], [Codigo]) VALUES (N'49e3acc6-0818-4ca1-97ec-ff0bedc591ee', N'Camisetas', 100)
+INSERT INTO [dbo].[Categorias] ([Id], [Nome], [Codigo]) VALUES (N'e2a58c2c-e743-4421-948b-9b7135b76f6f', N'Canecas', 101)
+
+produtos
+INSERT INTO [dbo].[Produtos] ([Id], [Nome], [Descricao], [Ativo], [Valor], [DataCadastro], [Imagem], [QuantidadeEstoque], [CategoriaId], [Altura], [Largura], [Profundidade]) VALUES (N'ddbfa746-602c-48b1-b307-8e4e2e8c2df0', N'Caneca do Batman', N'Caneca do Batman', 1, CAST(105.00 AS Decimal(18, 2)), N'2019-07-19 00:00:00', N'image1.jpg', 10, N'e2a58c2c-e743-4421-948b-9b7135b76f6f', 1, 2, 3)
+INSERT INTO [dbo].[Produtos] ([Id], [Nome], [Descricao], [Ativo], [Valor], [DataCadastro], [Imagem], [QuantidadeEstoque], [CategoriaId], [Altura], [Largura], [Profundidade]) VALUES (N'3c80d745-62ab-4bf9-88d1-c41f57707a63', N'Camisa Florida', N'Camisa Florida', 1, CAST(50.00 AS Decimal(18, 2)), N'2019-07-19 00:00:00', N'image2.jpg', 5, N'49e3acc6-0818-4ca1-97ec-ff0bedc591ee', 5, 6, 7)
+INSERT INTO [dbo].[Produtos] ([Id], [Nome], [Descricao], [Ativo], [Valor], [DataCadastro], [Imagem], [QuantidadeEstoque], [CategoriaId], [Altura], [Largura], [Profundidade]) VALUES (N'72106f50-e341-4277-b067-b82a02111492', N'Adesivo do Brasil', N'Adesivo do Brasil', 1, CAST(5.00 AS Decimal(18, 2)), N'2019-07-19 00:00:00', N'image3.jpg', 20, N'a0182512-5a21-4eee-8b30-d626ce8b8d3f', 1, 1, 1)
+
+vouchers
+INSERT INTO [dbo].[Vouchers] ([Id], [Codigo], [Percentual], [ValorDesconto], [Quantidade], [TipoDescontoVoucher], [DataCriacao], [DataUtilizacao], [DataValidade], [Ativo], [Utilizado]) VALUES (N'5fd06d60-3e0d-4ba4-9bb7-3422500601b1', N'PROMO-15-OFF', NULL, CAST(15.00 AS Decimal(18, 2)), 0, 1, N'2020-03-09 00:00:00', NULL, N'2020-07-31 00:00:00', 1, 0)
+INSERT INTO [dbo].[Vouchers] ([Id], [Codigo], [Percentual], [ValorDesconto], [Quantidade], [TipoDescontoVoucher], [DataCriacao], [DataUtilizacao], [DataValidade], [Ativo], [Utilizado]) VALUES (N'cbd4e057-d43f-485d-b348-c70a24af2367', N'PROMO-10-OFF', CAST(10.00 AS Decimal(18, 2)), NULL, 50, 0, N'2020-03-09 00:00:00', NULL, N'2020-07-31 00:00:00', 1, 0)
+
+#Docker
+docker pull eventstore/eventstore -> PARA BAIXAR A IMAGEM
+docker run --name eventstore-node -it -p 2113:2113 -p 1113:1113 eventstore/eventstore -> RODAR O CONTEINER
+http://127.0.0.1:2113/ -> URL DE ACESSO
+admin:changeit -> USER E PASSWORD
